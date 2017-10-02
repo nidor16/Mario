@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Mario : MonoBehaviour {
 
-	public float moveSpeed = 10f;
-	public float jumpSpeed = 10f;
+	public float moveSpeed;
+	public float jumpSpeed;
 
 
 	private CharacterController controller;
-	private Vector3 movement = Vector3.zero;
+	private Vector3 movement;
 	private Animator anim;
 
 	void Awake()
@@ -18,31 +18,10 @@ public class Mario : MonoBehaviour {
 		anim = GetComponent<Animator> ();
 	}
 
-	void Update()
+	void FixedUpdate()
 	{
 		Movement ();
-
-		if (Input.GetKey (KeyCode.A) && controller.isGrounded) {
-			anim.SetBool ("runleft", true);
-		} else 
-		{
-			anim.SetBool ("runleft", false);
-		}
-
-		if (Input.GetKey (KeyCode.D) && controller.isGrounded) {
-			anim.SetBool ("runright", true);
-		} else 
-		{
-			anim.SetBool ("runright", false);
-		}
-
-		if (!controller.isGrounded && Input.GetKey (KeyCode.D)) {
-			anim.SetBool ("jumpright", true);
-			anim.SetBool ("runright", false);
-		} else 
-		{
-			anim.SetBool ("jumpright", false);
-		}
+		Animations ();
 	}
 
 	void Movement()
@@ -58,5 +37,50 @@ public class Mario : MonoBehaviour {
 			movement.y = jumpSpeed;
 
 		controller.Move (movement * Time.deltaTime);
+		}
+
+	void Animations()
+	{
+		if (controller.isGrounded) 
+		{
+			anim.SetBool ("jumpleft", false);
+			anim.SetBool ("jumpright", false);
+
+			if (Input.GetKey (KeyCode.A)) {
+				anim.SetBool ("runleft", true);
+			} else 
+			{
+				anim.SetBool ("runleft", false);
+			}
+
+			if (Input.GetKey (KeyCode.D)) {
+				anim.SetBool ("runright", true);
+			} else 
+			{
+				anim.SetBool ("runright", false);
+			}
+		}
+
+		if (!(controller.isGrounded)) 
+		{
+			anim.SetBool ("runleft", false);
+			anim.SetBool ("runright", false);
+
+			if(Input.GetKey (KeyCode.D))
+			{
+				anim.SetBool ("jumpright", true);
+			} else 
+			{
+				anim.SetBool ("jumpright", false);
+			}
+
+			if (Input.GetKey (KeyCode.A)) 
+			{
+				anim.SetBool ("jumpleft", true);
+			} else 
+			{
+				anim.SetBool ("jumpleft", false);
+			}
+		}
 	}
 }
