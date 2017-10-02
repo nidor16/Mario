@@ -53,9 +53,6 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: runright
-    m_EventTreshold: 0
-  - m_ConditionMode: 1
     m_ConditionEvent: jumpright
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
@@ -79,9 +76,6 @@ AnimatorStateTransition:
   m_PrefabInternal: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: runleft
-    m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: jumpleft
     m_EventTreshold: 0
@@ -178,9 +172,6 @@ AnimatorStateTransition:
   m_PrefabInternal: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: runleft
-    m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: jumpleft
     m_EventTreshold: 0
@@ -262,9 +253,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 0.25483233
   m_TransitionOffset: 0
-  m_ExitTime: 0.75
+  m_ExitTime: 0.7451677
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -379,9 +370,6 @@ AnimatorStateTransition:
   m_PrefabInternal: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: runright
-    m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: jumpright
     m_EventTreshold: 0
@@ -450,7 +438,7 @@ AnimatorState:
   m_Motion: {fileID: 7400000, guid: fb2529aa3c8e29b438ec3aa0ee3177c7, type: 2}
   m_Tag: 
   m_SpeedParameter: 
-  m_MirrorParameter: 
+  m_MirrorParameter: runright
   m_CycleOffsetParameter: 
 --- !u!1102 &1102058322060304832
 AnimatorState:
