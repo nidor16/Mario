@@ -9,34 +9,22 @@ public class Minion : MonoBehaviour {
 	private Rigidbody rb;
 	private Vector3 minionPos;
 	private int direction = 1;
+	private Animator animMin;
 
 	void Awake () 
 	{
 		rb = GetComponent<Rigidbody> ();
+		animMin = GetComponent<Animator> ();
 	}
 		
 	void Start ()
 	{
 		direction *= -1;
-	//	Quaternion minionRot;
-	//	minionRot = new Quaternion (0, 180, 0,0);
-	//	transform.rotation = minionRot;
 	}
 
-	void Update () {
-		Move ();
-	}
-
-	private void OnCollisionEnter (Collision other)
+	void Update () 
 	{
-		if(other.gameObject.CompareTag("Block"))
-		{
-			direction *= -1;
-
-			//Quaternion minionRot;
-			//minionRot = new Quaternion (0, 180, 0,0);
-			//transform.rotation = minionRot;
-		}
+		Move ();
 	}
 
 	private void Move()
@@ -46,5 +34,28 @@ public class Minion : MonoBehaviour {
 		transform.position = minionPos;
 	}
 
+	private void OnCollisionEnter (Collision other)
+	{
+		if(other.gameObject.CompareTag("Block") || other.gameObject.CompareTag("Minion") || other.gameObject.CompareTag("Tube"))
+		{
+			direction *= -1;
+		}
 
+		if(other.gameObject.CompareTag("Player"))
+		{
+			Destroy (other.gameObject);  // add a DEAD
+		}
+	}
+
+	private IEnumerator OnTriggerEnter (Collider other)
+	{
+		if (other) 
+		{
+			Mario.instance.movement.y = Mario.instance.jumpSpeed * 0.5f;
+			animMin.SetBool ("dead", true);
+			minionSpeed = 0f;
+			yield return new WaitForSecondsRealtime (0.5f);
+			Destroy (gameObject);
+		}
+	}
 }

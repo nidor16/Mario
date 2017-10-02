@@ -23,6 +23,8 @@ GameObject:
   - component: {fileID: 95640577299041732}
   - component: {fileID: 54671663531324438}
   - component: {fileID: 65278327113694126}
+  - component: {fileID: 65979779666380974}
+  - component: {fileID: 114884295147398208}
   m_Layer: 0
   m_Name: minion.walk.1
   m_TagString: Minion
@@ -37,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1479658261046500}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16, y: -3, z: 0}
+  m_LocalPosition: {x: 14.5, y: -3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -68,8 +70,20 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.0492467, z: 0.2}
-  m_Center: {x: -0.002067089, y: -0.018422186, z: 0}
+  m_Size: {x: 1, y: 0.8092396, z: 0.2}
+  m_Center: {x: -0.002067089, y: -0.13842571, z: 0}
+--- !u!65 &65979779666380974
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1479658261046500}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.87293625, y: 0.077870846, z: 0.2}
+  m_Center: {x: 0.012376785, y: 0.44249797, z: 0}
 --- !u!95 &95640577299041732
 Animator:
   serializedVersion: 3
@@ -87,6 +101,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114884295147398208
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1479658261046500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60e21fe4b5ce80948aeac4472426d874, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minionSpeed: 2
 --- !u!212 &212205014003571114
 SpriteRenderer:
   m_ObjectHideFlags: 1

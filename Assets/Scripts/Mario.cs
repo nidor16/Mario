@@ -6,16 +6,25 @@ public class Mario : MonoBehaviour {
 
 	public float moveSpeed;
 	public float jumpSpeed;
-
+	public Vector3 movement;
+	public static Mario instance = null;
 
 	private CharacterController controller;
-	private Vector3 movement;
+
 	private Animator anim;
 
 	void Awake()
 	{
 		controller = GetComponent<CharacterController> ();
 		anim = GetComponent<Animator> ();
+	}
+
+	void Start()
+	{
+		if (instance == null)
+			instance = this;
+		else if (instance != null)
+			Destroy (gameObject);
 	}
 
 	void FixedUpdate()
