@@ -5,6 +5,7 @@ using UnityEngine;
 public class Minion : MonoBehaviour {
 
 	public float minionSpeed;
+	public AudioSource deathSound;
 
 	private Rigidbody rb;
 	private Vector3 minionPos;
@@ -15,11 +16,12 @@ public class Minion : MonoBehaviour {
 	{
 		rb = GetComponent<Rigidbody> ();
 		animMin = GetComponent<Animator> ();
+		deathSound = GetComponent<AudioSource> ();
 	}
 		
 	void Start ()
 	{
-		direction *= -1;
+		direction = -1;
 	}
 
 	void Update () 
@@ -51,10 +53,11 @@ public class Minion : MonoBehaviour {
 	{
 		if (other) 
 		{
-			Mario.instance.movement.y = Mario.instance.jumpSpeed * 0.5f;
+			deathSound.Play ();
+			Mario.instance.movement.y = Mario.instance.jumpSpeed * 0.3f;
 			animMin.SetBool ("dead", true);
 			minionSpeed = 0f;
-			yield return new WaitForSecondsRealtime (0.5f);
+			yield return new WaitForSecondsRealtime (0.3f);
 			Destroy (gameObject);
 		}
 	}
