@@ -7,10 +7,13 @@ public class Mario : MonoBehaviour {
 	public float moveSpeed;
 	public float jumpSpeed;
 	public Vector3 movement;
+	public AudioSource aSource;
+	public AudioClip marioJump;
 	public static Mario instance = null;
 
-	private CharacterController controller;
+	public bool isDead = false;
 
+	private CharacterController controller;
 	private Animator anim;
 
 	void Awake()
@@ -29,6 +32,7 @@ public class Mario : MonoBehaviour {
 
 	void FixedUpdate()
 	{
+		
 		Movement ();
 		Animations ();
 	}
@@ -37,16 +41,29 @@ public class Mario : MonoBehaviour {
 	{
 		movement.x = Input.GetAxis ("Horizontal") * moveSpeed;
 
-		if (controller.isGrounded == false) 
+			if (controller.isGrounded == false) {
+				movement.y += Physics.gravity.y * Time.deltaTime;
+			}
+
+			if (Input.GetButton ("Jump") && controller.isGrounded == true) {
+				aSource.clip = marioJump;
+				aSource.Play ();
+				movement.y = jumpSpeed;
+			}
+
+			controller.Move (movement * Time.deltaTime);
+		}
+
+	private void OnCollisionEnter (Collision other)
+	{
+		if(other.gameObject.CompareTag("Minion"))
 		{
-			movement.y += Physics.gravity.y * Time.deltaTime;
-		}
-
-		if (Input.GetButton ("Jump") && controller.isGrounded == true)
+			isDead = true;
+			anim.SetBool ("death", true);
+			this.gameObject.GetComponent<CharacterController>().enabled = false;
 			movement.y = jumpSpeed;
-
-		controller.Move (movement * Time.deltaTime);
 		}
+	}
 
 	void Animations()
 	{
@@ -70,7 +87,7 @@ public class Mario : MonoBehaviour {
 			}
 		}
 
-		if (!(controller.isGrounded)) 
+		if (!controller.isGrounded) 
 		{
 			anim.SetBool ("runleft", false);
 			anim.SetBool ("runright", false);

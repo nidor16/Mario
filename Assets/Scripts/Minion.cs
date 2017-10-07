@@ -42,22 +42,18 @@ public class Minion : MonoBehaviour {
 		{
 			direction *= -1;
 		}
-
-		if(other.gameObject.CompareTag("Player"))
-		{
-			Destroy (other.gameObject);  // add a DEAD
-		}
 	}
 
 	private IEnumerator OnTriggerEnter (Collider other)
 	{
-		if (other) 
+		if (other.gameObject.CompareTag("Player")) 
 		{
+			this.gameObject.GetComponent<BoxCollider>().enabled = false;
 			deathSound.Play ();
-			Mario.instance.movement.y = Mario.instance.jumpSpeed * 0.3f;
+			Mario.instance.movement.y = Mario.instance.jumpSpeed * 0.2f;
 			animMin.SetBool ("dead", true);
 			minionSpeed = 0f;
-			yield return new WaitForSecondsRealtime (0.3f);
+			yield return new WaitForSecondsRealtime (0.2f);
 			Destroy (gameObject);
 		}
 	}
