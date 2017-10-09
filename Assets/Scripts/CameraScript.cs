@@ -16,7 +16,7 @@ public class CameraScript : MonoBehaviour {
 		float zPos = transform.position.z;
 		float xPos = Mario.instance.transform.position.x;
 
-		camPos = new Vector3 (Mathf.Clamp(xPos, 3,130), yPos, zPos);
+		camPos = new Vector3 (Mathf.Clamp(xPos, 0,130), yPos, zPos);
 		transform.position = camPos;
 	}
 }

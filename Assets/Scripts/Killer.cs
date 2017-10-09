@@ -5,6 +5,9 @@ using UnityEngine;
 public class Killer : MonoBehaviour {
 	void OnTriggerEnter(Collider other)
 	{
-		Destroy (other.gameObject);
+		if(other.gameObject.CompareTag("Player"))
+		{
+			Destroy (other.gameObject);
+		}
 	}
 }

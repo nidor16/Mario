@@ -7,14 +7,12 @@ public class Minion : MonoBehaviour {
 	public float minionSpeed;
 	public AudioSource deathSound;
 
-	private Rigidbody rb;
 	private Vector3 minionPos;
 	private int direction = 1;
 	private Animator animMin;
 
 	void Awake () 
 	{
-		rb = GetComponent<Rigidbody> ();
 		animMin = GetComponent<Animator> ();
 		deathSound = GetComponent<AudioSource> ();
 	}
