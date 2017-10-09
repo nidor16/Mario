@@ -42,12 +42,12 @@ public class Mario : MonoBehaviour {
 		movement.x = Input.GetAxis ("Horizontal") * moveSpeed;
 
 			if (controller.isGrounded == false) {
+				movement.x = Input.GetAxis ("Horizontal") * 0.8f * moveSpeed;
 				movement.y += Physics.gravity.y * Time.deltaTime;
 			}
 
 			if (Input.GetButton ("Jump") && controller.isGrounded == true) 
 			{
-			float yPos = transform.position.y;
 				aSource.clip = marioJump;
 				aSource.Play ();
 				movement.y = jumpSpeed;

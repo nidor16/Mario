@@ -4,18 +4,28 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour {
 
+	public int coinValue;
 	public AudioSource coin;
+	public static Coin instance = null;
+
+	void Start()
+	{
+		if (instance == null)
+			instance = this;
+	}
 
 	void Awake()
 	{
 		coin = GetComponent<AudioSource> ();
 	}
 
-	IEnumerator OnTriggerEnter(Collider other)
+	public IEnumerator OnTriggerEnter(Collider other)
 	{
 		coin.Play ();
 		this.gameObject.GetComponent<BoxCollider>().enabled = false;
 		this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+		Controller.instance.points += coinValue;
+		Controller.instance.coins += 1;
 		yield return new WaitForSeconds (2f);
 		Destroy (gameObject);
 	}
