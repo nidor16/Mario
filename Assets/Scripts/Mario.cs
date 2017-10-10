@@ -4,22 +4,27 @@ using UnityEngine;
 
 public class Mario : MonoBehaviour {
 
+	public float speedofscale;
 	public float moveSpeed;
 	public float jumpSpeed;
 	public Vector3 movement;
 	public AudioSource aSource;
 	public AudioClip marioJump;
+	public AudioClip marioDead;
 	public static Mario instance = null;
-
 	public bool isDead = false;
+
 
 	private CharacterController controller;
 	private Animator anim;
+	private Rigidbody mRB;
+
 
 	void Awake()
 	{
 		controller = GetComponent<CharacterController> ();
 		anim = GetComponent<Animator> ();
+		mRB = GetComponent<Rigidbody> ();
 	}
 
 	void Start()
@@ -32,7 +37,6 @@ public class Mario : MonoBehaviour {
 
 	void FixedUpdate()
 	{
-		
 		Movement ();
 		Animations ();
 	}
@@ -55,41 +59,50 @@ public class Mario : MonoBehaviour {
 
 			controller.Move (movement * Time.deltaTime);
 		}
-
-	private void OnCollisionEnter (Collision other)
+		
+	void OnCollisionEnter (Collision other)
 	{
 		if(other.gameObject.CompareTag("Minion"))
 		{
-			isDead = true;
-			anim.SetBool ("death", true);
-			this.gameObject.GetComponent<CharacterController>().enabled = false;
-			movement.y = jumpSpeed;
+			StartCoroutine (Death ());
 		}
+	}
+
+	private IEnumerator Death()
+	{
+		isDead = true;
+		Controller.instance.music.Stop ();
+		aSource.clip = marioDead;
+		aSource.Play ();
+		anim.SetBool ("death", true);
+		movement.y = jumpSpeed * 0.7f;
+		yield return new WaitForSeconds (0.4f);
+		this.gameObject.GetComponent<CharacterController>().enabled = false;
+		this.gameObject.GetComponent<Rigidbody> ().useGravity = true;
+		movement.y = jumpSpeed;
 	}
 
 	void Animations()
 	{
-		if (controller.isGrounded) 
+		if (controller.isGrounded && !isDead) 
 		{
 			anim.SetBool ("jumpleft", false);
 			anim.SetBool ("jumpright", false);
 
 			if (Input.GetKey (KeyCode.A)) {
 				anim.SetBool ("runleft", true);
-			} else 
-			{
+			} else {
 				anim.SetBool ("runleft", false);
 			}
 
 			if (Input.GetKey (KeyCode.D)) {
 				anim.SetBool ("runright", true);
-			} else 
-			{
+			} else {
 				anim.SetBool ("runright", false);
 			}
 		}
 
-		if (!controller.isGrounded) 
+		if (!controller.isGrounded && !isDead) 
 		{
 			anim.SetBool ("runleft", false);
 			anim.SetBool ("runright", false);
@@ -97,16 +110,14 @@ public class Mario : MonoBehaviour {
 			if(Input.GetKey (KeyCode.D))
 			{
 				anim.SetBool ("jumpright", true);
-			} else 
-			{
+			} else {
 				anim.SetBool ("jumpright", false);
 			}
 
 			if (Input.GetKey (KeyCode.A)) 
 			{
 				anim.SetBool ("jumpleft", true);
-			} else 
-			{
+			} else {
 				anim.SetBool ("jumpleft", false);
 			}
 		}

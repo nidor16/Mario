@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class Controller : MonoBehaviour {
 
+	public GameObject mario;
+	public Vector3 startPosition;
+	public Vector3 spawnPosition;
 	public int points;
 	public int coins;
 	public float timeleft;
@@ -26,7 +29,8 @@ public class Controller : MonoBehaviour {
 			instance = this;
 		else if (instance != null)
 			Destroy (gameObject);
-		
+
+		//Instantiate (mario, startPosition,Quaternion.identity);
 		music.clip = backgroudMusic;
 		music.Play ();
 		points = 0;

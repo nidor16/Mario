@@ -36,7 +36,7 @@ public class Minion : MonoBehaviour {
 
 	private void OnCollisionEnter (Collision other)
 	{
-		if(other.gameObject.CompareTag("Block") || other.gameObject.CompareTag("Minion") || other.gameObject.CompareTag("Tube"))
+		if(other.gameObject.CompareTag("Block") || other.gameObject.CompareTag("Minion") || other.gameObject.CompareTag("Tube") || other.gameObject.CompareTag("Player"))
 		{
 			direction *= -1;
 		}
