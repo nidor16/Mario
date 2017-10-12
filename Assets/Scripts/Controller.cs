@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Controller : MonoBehaviour {
 
@@ -13,6 +14,10 @@ public class Controller : MonoBehaviour {
 	public Text pointsText;
 	public Text coinsText;
 	public Text timeText;
+	public Text uscorre;
+	public GameObject congra;
+	public GameObject uscore;
+	public GameObject rest;
 	public static Controller instance = null;
 
 	void Awake()
@@ -46,11 +51,34 @@ public class Controller : MonoBehaviour {
 			if (timeleft < 0) {
 				timeleft = 0;
 			}
-		} 
-			
+		} else 
+		{
+			StartCoroutine (StartWin ());
+		}	
+
 		UpdateTime ();
 		UpdateCoins ();
 		UpdatePoints ();
+	}
+
+	IEnumerator StartWin()
+	{
+		uscorre.text = "Your score: " + points;
+		yield return new WaitForSeconds (1f);
+		congra.SetActive (true);
+		yield return new WaitForSeconds (2f);
+		uscore.SetActive (true);
+		yield return new WaitForSeconds (2f);
+		rest.SetActive (true);
+		RestartGame ();
+	}
+
+	void RestartGame()
+	{
+		if (Input.GetKey (KeyCode.R)) 
+		{
+			SceneManager.LoadScene ("Main");
+		}
 	}
 
 	void UpdatePoints()

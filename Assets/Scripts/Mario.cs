@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Mario : MonoBehaviour {
 
@@ -72,6 +73,8 @@ public class Mario : MonoBehaviour {
 		yield return new WaitForSeconds (0.4f);
 		this.gameObject.GetComponent<CharacterController>().enabled = false;
 		this.gameObject.GetComponent<Rigidbody> ().useGravity = true;
+		yield return new WaitForSeconds (5f);
+		SceneManager.LoadScene ("Main");
 	}
 
 	void Animations()

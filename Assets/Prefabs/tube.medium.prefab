@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4723883943189372}
   - component: {fileID: 212726560116945226}
-  - component: {fileID: 68881752519408472}
+  - component: {fileID: 65764826901531518}
   m_Layer: 0
   m_Name: tube.medium
   m_TagString: Tube
@@ -35,35 +35,24 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1496573982452276}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 90, y: -2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!68 &68881752519408472
-EdgeCollider2D:
+--- !u!65 &65764826901531518
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1496573982452276}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
-  m_Points:
-  - {x: -0.882634, y: -1.5089906}
-  - {x: -0.8722563, y: 0.548946}
-  - {x: -1.0007086, y: 0.5567012}
-  - {x: -0.995052, y: 1.5098023}
-  - {x: 0.9885945, y: 1.4996715}
-  - {x: 1.0012316, y: 0.5617498}
-  - {x: 0.87808055, y: 0.56167233}
-  - {x: 0.8714563, y: -1.5034018}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.8199539, y: 2.8585367, z: 0.2}
+  m_Center: {x: -0.0128593445, y: -0.07073164, z: 0}
 --- !u!212 &212726560116945226
 SpriteRenderer:
   m_ObjectHideFlags: 1
