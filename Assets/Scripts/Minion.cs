@@ -13,7 +13,6 @@ public class Minion : MonoBehaviour {
 	private int direction = 1;
 	private Animator animMin;
 
-
 	void Awake () 
 	{
 		animMin = GetComponent<Animator> ();
@@ -47,8 +46,7 @@ public class Minion : MonoBehaviour {
 		}
 		else if(other.gameObject.CompareTag("Player"))
 			{
-				minionSpeed = 0f;
-				direction *= -1;
+				//minionSpeed = 0f;
 			}
 	}
 

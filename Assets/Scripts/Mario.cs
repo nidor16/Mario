@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Mario : MonoBehaviour {
 
-	public float speedofscale;
 	public float moveSpeed;
 	public float jumpSpeed;
 	public Vector3 movement;
@@ -13,7 +12,6 @@ public class Mario : MonoBehaviour {
 	public AudioClip marioDead;
 	public static Mario instance = null;
 	public bool isDead = false;
-
 
 	private CharacterController controller;
 	private Animator anim;
@@ -47,7 +45,7 @@ public class Mario : MonoBehaviour {
 				movement.y += Physics.gravity.y * Time.deltaTime;
 			}
 
-			if (Input.GetButton ("Jump") && controller.isGrounded == true) 
+		if (Input.GetButton ("Jump") && controller.isGrounded == true && isDead == false) 
 			{
 				aSource.clip = marioJump;
 				aSource.Play ();

@@ -5,9 +5,6 @@ using UnityEngine.UI;
 
 public class Controller : MonoBehaviour {
 
-	public GameObject mario;
-	public Vector3 startPosition;
-	public Vector3 spawnPosition;
 	public int points;
 	public int coins;
 	public float timeleft;
@@ -34,7 +31,7 @@ public class Controller : MonoBehaviour {
 		music.Play ();
 		points = 0;
 		coins = 0;
-		timeleft = 180;
+		timeleft = 120;
 		pointsText.text = "" + points;
 		coinsText.text = "" + coins;
 		timeText.text = "" +  timeleft;
@@ -42,10 +39,15 @@ public class Controller : MonoBehaviour {
 
 	void Update () 
 	{
-		timeleft -= Time.deltaTime;
-		if (timeleft < 0) {
-			timeleft = 0;
-		}
+		if (!TubeEnd.instance.winGame) 
+		{
+			timeleft -= Time.deltaTime;
+
+			if (timeleft < 0) {
+				timeleft = 0;
+			}
+		} 
+			
 		UpdateTime ();
 		UpdateCoins ();
 		UpdatePoints ();
