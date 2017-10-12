@@ -6,10 +6,13 @@ public class Minion : MonoBehaviour {
 
 	public float minionSpeed;
 	public AudioSource deathSound;
+	public int minionValue;
+	public static Minion instance = null;
 
 	private Vector3 minionPos;
 	private int direction = 1;
 	private Animator animMin;
+
 
 	void Awake () 
 	{
@@ -19,6 +22,8 @@ public class Minion : MonoBehaviour {
 		
 	void Start ()
 	{
+		if (instance == null)
+			instance = this;
 		direction = -1;
 	}
 
@@ -36,23 +41,34 @@ public class Minion : MonoBehaviour {
 
 	private void OnCollisionEnter (Collision other)
 	{
-		if(other.gameObject.CompareTag("Block") || other.gameObject.CompareTag("Minion") || other.gameObject.CompareTag("Tube") || other.gameObject.CompareTag("Player"))
+		if(other.gameObject.CompareTag("Block") || other.gameObject.CompareTag("Minion") || other.gameObject.CompareTag("Tube"))
 		{
 			direction *= -1;
 		}
+		else if(other.gameObject.CompareTag("Player"))
+			{
+				minionSpeed = 0f;
+				direction *= -1;
+			}
 	}
 
-	private IEnumerator OnTriggerEnter (Collider other)
+	void OnTriggerEnter (Collider other)
 	{
-		if (other.gameObject.CompareTag("Player")) 
+		if (!Mario.instance.isDead && other.gameObject.CompareTag("Player")) 
 		{
-			this.gameObject.GetComponent<BoxCollider>().enabled = false;
-			deathSound.Play ();
-			Mario.instance.movement.y = Mario.instance.jumpSpeed * 0.2f;
-			animMin.SetBool ("dead", true);
-			minionSpeed = 0f;
-			yield return new WaitForSecondsRealtime (0.2f);
-			Destroy (gameObject);
+			StartCoroutine (bump ());
 		}
+	}
+
+	IEnumerator bump()
+	{
+		Mario.instance.movement.y = Mario.instance.jumpSpeed * 0.2f;
+		minionSpeed = 0f;
+		deathSound.Play ();
+		animMin.SetBool ("dead", true);
+		this.gameObject.GetComponent<BoxCollider>().enabled = false;
+		Controller.instance.points += minionValue;
+		yield return new WaitForSeconds (0.2f);
+		Destroy (gameObject);
 	}
 }

@@ -17,14 +17,11 @@ public class Mario : MonoBehaviour {
 
 	private CharacterController controller;
 	private Animator anim;
-	private Rigidbody mRB;
-
 
 	void Awake()
 	{
 		controller = GetComponent<CharacterController> ();
 		anim = GetComponent<Animator> ();
-		mRB = GetComponent<Rigidbody> ();
 	}
 
 	void Start()
@@ -56,30 +53,27 @@ public class Mario : MonoBehaviour {
 				aSource.Play ();
 				movement.y = jumpSpeed;
 			}
-
-			controller.Move (movement * Time.deltaTime);
+			
+		controller.Move (movement * Time.deltaTime);
 		}
-		
-	void OnCollisionEnter (Collision other)
-	{
-		if(other.gameObject.CompareTag("Minion"))
-		{
-			StartCoroutine (Death ());
-		}
-	}
 
-	private IEnumerator Death()
+	public void Death()
 	{
 		isDead = true;
+		moveSpeed = 0f;
+		movement.y = jumpSpeed * 0.7f;
+		anim.SetBool ("death", true);
 		Controller.instance.music.Stop ();
 		aSource.clip = marioDead;
 		aSource.Play ();
-		anim.SetBool ("death", true);
-		movement.y = jumpSpeed * 0.7f;
+		StartCoroutine (StartDie ());
+	}
+
+	IEnumerator StartDie()
+	{
 		yield return new WaitForSeconds (0.4f);
 		this.gameObject.GetComponent<CharacterController>().enabled = false;
 		this.gameObject.GetComponent<Rigidbody> ().useGravity = true;
-		movement.y = jumpSpeed;
 	}
 
 	void Animations()

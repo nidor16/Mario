@@ -19,7 +19,13 @@ public class Coin : MonoBehaviour {
 		coin = GetComponent<AudioSource> ();
 	}
 
-	public IEnumerator OnTriggerEnter(Collider other)
+
+	void OnTriggerEnter(Collider other)
+	{
+		StartCoroutine(Collect());
+	}
+
+	IEnumerator Collect()
 	{
 		coin.Play ();
 		this.gameObject.GetComponent<BoxCollider>().enabled = false;

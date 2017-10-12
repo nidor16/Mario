@@ -6,7 +6,8 @@ public class CameraScript : MonoBehaviour {
 
 	private Vector3 camPos;
 
-	void Update () {
+	void Update () 
+	{
 		CamMove ();
 	}
 

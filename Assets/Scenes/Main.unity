@@ -651,7 +651,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4302186969249796, guid: 57bd8cf4afbf0584990b22f08a229bda, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 3
+      value: 4.61
       objectReference: {fileID: 0}
     - target: {fileID: 4302186969249796, guid: 57bd8cf4afbf0584990b22f08a229bda, type: 2}
       propertyPath: m_LocalPosition.y
@@ -1839,6 +1839,14 @@ Prefab:
         type: 2}
       propertyPath: m_Size.x
       value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1508883600559358, guid: a5aa7bfe235923a42ae920ef17b612a4, type: 2}
+      propertyPath: m_TagString
+      value: Block
+      objectReference: {fileID: 0}
+    - target: {fileID: 1218580830648684, guid: a5aa7bfe235923a42ae920ef17b612a4, type: 2}
+      propertyPath: m_TagString
+      value: Block
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 65229338717828176, guid: a5aa7bfe235923a42ae920ef17b612a4, type: 2}
@@ -3480,11 +3488,6 @@ Prefab:
     - target: {fileID: 1479658261046500, guid: 57bd8cf4afbf0584990b22f08a229bda, type: 2}
       propertyPath: m_Name
       value: minion.walk.1 (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 114884295147398208, guid: 57bd8cf4afbf0584990b22f08a229bda,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 57bd8cf4afbf0584990b22f08a229bda, type: 2}
@@ -5448,7 +5451,7 @@ Prefab:
     - target: {fileID: 143413376621232214, guid: d53fe9009a0ea7b45a47d42c724e7c56,
         type: 2}
       propertyPath: m_Radius
-      value: 0.5
+      value: 0.35
       objectReference: {fileID: 0}
     - target: {fileID: 143413376621232214, guid: d53fe9009a0ea7b45a47d42c724e7c56,
         type: 2}
@@ -5460,6 +5463,21 @@ Prefab:
       propertyPath: marioDead
       value: 
       objectReference: {fileID: 8300000, guid: ac3a66b538d025d48acde8ae6d39e0b5, type: 3}
+    - target: {fileID: 82611082829366408, guid: d53fe9009a0ea7b45a47d42c724e7c56,
+        type: 2}
+      propertyPath: m_Pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 82611082829366408, guid: d53fe9009a0ea7b45a47d42c724e7c56,
+        type: 2}
+      propertyPath: spreadCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 82611082829366408, guid: d53fe9009a0ea7b45a47d42c724e7c56,
+        type: 2}
+      propertyPath: BypassEffects
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 54623952957380606, guid: d53fe9009a0ea7b45a47d42c724e7c56, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: d53fe9009a0ea7b45a47d42c724e7c56, type: 2}

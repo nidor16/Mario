@@ -30,7 +30,6 @@ public class Controller : MonoBehaviour {
 		else if (instance != null)
 			Destroy (gameObject);
 
-		//Instantiate (mario, startPosition,Quaternion.identity);
 		music.clip = backgroudMusic;
 		music.Play ();
 		points = 0;
