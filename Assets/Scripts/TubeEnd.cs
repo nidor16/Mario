@@ -8,7 +8,6 @@ public class TubeEnd : MonoBehaviour
 	public bool winGame = false;
 	public static TubeEnd instance = null;
 
-
 	void Awake()
 	{
 		winSound = GetComponent<AudioSource> ();

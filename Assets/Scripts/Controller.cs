@@ -48,10 +48,12 @@ public class Controller : MonoBehaviour {
 		{
 			timeleft -= Time.deltaTime;
 
-			if (timeleft < 0) {
+			if (timeleft < 0) 
+			{
 				timeleft = 0;
 			}
-		} else 
+		} 
+		else 
 		{
 			StartCoroutine (StartWin ());
 		}	
@@ -76,7 +78,6 @@ public class Controller : MonoBehaviour {
 
 	void RestartGame()
 	{
-		
 		if (Input.GetKey (KeyCode.R)) 
 		{
 			Time.timeScale = 1f;

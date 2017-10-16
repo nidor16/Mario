@@ -44,10 +44,6 @@ public class Minion : MonoBehaviour {
 		{
 			direction *= -1;
 		}
-		else if(other.gameObject.CompareTag("Player"))
-			{
-				//minionSpeed = 0f;
-			}
 	}
 
 	void OnTriggerEnter (Collider other)
@@ -61,10 +57,10 @@ public class Minion : MonoBehaviour {
 	IEnumerator bump()
 	{
 		Mario.instance.movement.y = Mario.instance.jumpSpeed * 0.25f;
+		this.gameObject.GetComponent<BoxCollider>().enabled = false;
+		animMin.SetBool ("dead", true);
 		minionSpeed = 0f;
 		deathSound.Play ();
-		animMin.SetBool ("dead", true);
-		this.gameObject.GetComponent<BoxCollider>().enabled = false;
 		Controller.instance.points += minionValue;
 		yield return new WaitForSeconds (0.2f);
 		Destroy (gameObject);

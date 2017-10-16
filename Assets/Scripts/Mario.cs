@@ -29,6 +29,7 @@ public class Mario : MonoBehaviour {
 			instance = this;
 		else if (instance != null)
 			Destroy (gameObject);
+		anim.SetBool ("wright", true);
 	}
 
 	void FixedUpdate()
@@ -79,42 +80,62 @@ public class Mario : MonoBehaviour {
 
 	void Animations()
 	{
-		if (controller.isGrounded && !isDead) 
+		if (Input.GetKey(KeyCode.D) && controller.isGrounded && anim.GetBool ("jumpleft") == false && anim.GetBool ("jumpright") == false)
 		{
-			anim.SetBool ("jumpleft", false);
-			anim.SetBool ("jumpright", false);
-
-			if (Input.GetKey (KeyCode.A)) {
-				anim.SetBool ("runleft", true);
-			} else {
-				anim.SetBool ("runleft", false);
-			}
-
-			if (Input.GetKey (KeyCode.D)) {
-				anim.SetBool ("runright", true);
-			} else {
-				anim.SetBool ("runright", false);
-			}
+			anim.SetBool ("wright", true);
+			anim.SetBool ("wleft", false);
 		}
 
-		if (!controller.isGrounded && !isDead) 
+		if (Input.GetKey (KeyCode.A) && controller.isGrounded && anim.GetBool ("jumpleft") == false && anim.GetBool ("jumpright") == false) 
 		{
-			anim.SetBool ("runleft", false);
-			anim.SetBool ("runright", false);
+			anim.SetBool ("wleft", true);
+			anim.SetBool ("wright", false);
+		}
 
-			if(Input.GetKey (KeyCode.D))
+		if (anim.GetBool ("wright") == true && anim.GetBool ("wleft") == false) 
+		{
+			if (controller.isGrounded) 
+			{
+				anim.SetBool ("jumpright", false);
+
+				if (Input.GetKey (KeyCode.D)) 
+				{
+					anim.SetBool ("runright", true);
+					anim.SetBool ("runleft", false);
+				} 
+				else 
+				{
+					anim.SetBool ("runright", false);
+				}
+			} 
+			else 
 			{
 				anim.SetBool ("jumpright", true);
-			} else {
-				anim.SetBool ("jumpright", false);
+				anim.SetBool ("runright", false);
 			}
+		} 
+		else if (anim.GetBool ("wright") == false && anim.GetBool ("wleft") == true)
+		{
+			if (controller.isGrounded) 
+			{
+				anim.SetBool ("jumpleft", false);
 
-			if (Input.GetKey (KeyCode.A)) 
+				if (Input.GetKey (KeyCode.A)) 
+				{
+					anim.SetBool ("runleft", true);
+					anim.SetBool ("runright", false);
+				} 
+				else 
+				{
+					anim.SetBool ("runleft", false);
+				}
+			} 
+			else 
 			{
 				anim.SetBool ("jumpleft", true);
-			} else {
-				anim.SetBool ("jumpleft", false);
+				anim.SetBool ("runleft", false);
 			}
 		}
 	}
+
 }
