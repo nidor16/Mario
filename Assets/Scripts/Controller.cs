@@ -63,20 +63,23 @@ public class Controller : MonoBehaviour {
 
 	IEnumerator StartWin()
 	{
+		Time.timeScale = 0.001f;
 		uscorre.text = "Your score: " + points;
-		yield return new WaitForSeconds (1f);
+		yield return new WaitForSeconds (0.001f);
 		congra.SetActive (true);
-		yield return new WaitForSeconds (2f);
+		yield return new WaitForSeconds (0.002f);
 		uscore.SetActive (true);
-		yield return new WaitForSeconds (2f);
+		yield return new WaitForSeconds (0.002f);
 		rest.SetActive (true);
 		RestartGame ();
 	}
 
 	void RestartGame()
 	{
+		
 		if (Input.GetKey (KeyCode.R)) 
 		{
+			Time.timeScale = 1f;
 			SceneManager.LoadScene ("Main");
 		}
 	}

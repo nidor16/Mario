@@ -60,7 +60,7 @@ public class Minion : MonoBehaviour {
 
 	IEnumerator bump()
 	{
-		Mario.instance.movement.y = Mario.instance.jumpSpeed * 0.2f;
+		Mario.instance.movement.y = Mario.instance.jumpSpeed * 0.25f;
 		minionSpeed = 0f;
 		deathSound.Play ();
 		animMin.SetBool ("dead", true);
