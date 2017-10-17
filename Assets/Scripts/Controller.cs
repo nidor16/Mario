@@ -34,9 +34,6 @@ public class Controller : MonoBehaviour {
 
 		music.clip = backgroudMusic;
 		music.Play ();
-		points = 0;
-		coins = 0;
-		timeleft = 120;
 		pointsText.text = "" + points;
 		coinsText.text = "" + coins;
 		timeText.text = "" +  timeleft;
@@ -46,7 +43,12 @@ public class Controller : MonoBehaviour {
 	{
 		if (!TubeEnd.instance.winGame) 
 		{
-			timeleft -= Time.deltaTime;
+			timeleft -= Time.deltaTime * 2;
+
+			if (timeleft < 40) 
+			{
+				music.pitch = 1.4f;
+			}
 
 			if (timeleft < 0) 
 			{
@@ -58,6 +60,11 @@ public class Controller : MonoBehaviour {
 			StartCoroutine (StartWin ());
 		}	
 
+		if (!Mario.instance.isDead && timeleft == 0) 
+		{
+			Mario.instance.Death ();
+		}
+			
 		UpdateTime ();
 		UpdateCoins ();
 		UpdatePoints ();
@@ -73,6 +80,7 @@ public class Controller : MonoBehaviour {
 		uscore.SetActive (true);
 		yield return new WaitForSeconds (0.002f);
 		rest.SetActive (true);
+		yield return new WaitForSeconds (0.001f);
 		RestartGame ();
 	}
 

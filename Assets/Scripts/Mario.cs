@@ -19,6 +19,7 @@ public class Mario : MonoBehaviour {
 
 	void Awake()
 	{
+		aSource = GetComponent<AudioSource> ();
 		controller = GetComponent<CharacterController> ();
 		anim = GetComponent<Animator> ();
 	}
@@ -29,6 +30,7 @@ public class Mario : MonoBehaviour {
 			instance = this;
 		else if (instance != null)
 			Destroy (gameObject);
+		
 		anim.SetBool ("wright", true);
 	}
 
@@ -63,6 +65,16 @@ public class Mario : MonoBehaviour {
 		moveSpeed = 0f;
 		movement.y = jumpSpeed * 0.7f;
 		anim.SetBool ("death", true);
+		Controller.instance.music.Stop ();
+		aSource.clip = marioDead;
+		aSource.Play ();
+		StartCoroutine (StartDie ());
+	}
+
+	public void DeathA()
+	{
+		isDead = true;
+		moveSpeed = 0f;
 		Controller.instance.music.Stop ();
 		aSource.clip = marioDead;
 		aSource.Play ();

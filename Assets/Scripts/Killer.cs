@@ -8,7 +8,7 @@ public class Killer : MonoBehaviour {
 	{
 		if(other.gameObject.CompareTag("Player"))
 		{
-			Mario.instance.Death ();
+			Mario.instance.DeathA ();
 		}
 	}
 }
