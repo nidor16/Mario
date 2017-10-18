@@ -43,7 +43,7 @@ public class Controller : MonoBehaviour {
 	{
 		if (!TubeEnd.instance.winGame) 
 		{
-			timeleft -= Time.deltaTime * 2;
+			timeleft -= Time.deltaTime;
 
 			if (timeleft < 40) 
 			{

@@ -52,6 +52,7 @@ public class Mario : MonoBehaviour {
 		if (Input.GetButton ("Jump") && controller.isGrounded == true && isDead == false) 
 			{
 				aSource.clip = marioJump;
+				aSource.volume = 0.7f;
 				aSource.Play ();
 				movement.y = jumpSpeed;
 			}
@@ -67,6 +68,7 @@ public class Mario : MonoBehaviour {
 		anim.SetBool ("death", true);
 		Controller.instance.music.Stop ();
 		aSource.clip = marioDead;
+		aSource.volume = 1f;
 		aSource.Play ();
 		StartCoroutine (StartDie ());
 	}
@@ -77,6 +79,7 @@ public class Mario : MonoBehaviour {
 		moveSpeed = 0f;
 		Controller.instance.music.Stop ();
 		aSource.clip = marioDead;
+		aSource.volume = 1f;
 		aSource.Play ();
 		StartCoroutine (StartDie ());
 	}
