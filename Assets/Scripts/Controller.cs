@@ -78,8 +78,16 @@ public class Controller : MonoBehaviour {
 		congra.SetActive (true);
 		yield return new WaitForSeconds (0.002f);
 		uscore.SetActive (true);
-		yield return new WaitForSeconds (0.002f);
-		rest.SetActive (true);
+		if (points >= 7000) 
+		{
+			yield return new WaitForSeconds (0.006f);
+			rest.SetActive (true);
+		} 
+		else 
+		{
+			yield return new WaitForSeconds (0.002f);
+			rest.SetActive (true);
+		}
 		yield return new WaitForSeconds (0.001f);
 		RestartGame ();
 	}

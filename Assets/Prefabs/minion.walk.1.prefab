@@ -71,7 +71,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1479658261046500}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 116, y: -3, z: 0}
+  m_LocalPosition: {x: 14.5, y: -3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4000406306529372}
@@ -88,7 +88,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 124
@@ -103,8 +103,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.8, y: 0.8092396, z: 0.2}
-  m_Center: {x: 0.013450623, y: -0.13842571, z: 0}
+  m_Size: {x: 0.8, y: 0.71, z: 0.2}
+  m_Center: {x: 0, y: -0.18, z: 0}
 --- !u!65 &65321685135229742
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -115,8 +115,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.25, y: 0.7623272, z: 1}
-  m_Center: {x: 0.5, y: -0.1188364, z: 0}
+  m_Size: {x: 0.25, y: 0.6276326, z: 1}
+  m_Center: {x: 0.5, y: -0.18618369, z: 0}
 --- !u!65 &65557274156939492
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -127,8 +127,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.25, y: 0.7623272, z: 1}
-  m_Center: {x: -0.5, y: -0.1188364, z: 0}
+  m_Size: {x: 0.25, y: 0.61523247, z: 1}
+  m_Center: {x: -0.5, y: -0.19238377, z: 0}
 --- !u!65 &65979779666380974
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -139,8 +139,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.1, y: 0.2, z: 0.2}
-  m_Center: {x: 0, y: 0.5, z: 0}
+  m_Size: {x: 0.9, y: 0.2, z: 0.2}
+  m_Center: {x: 0, y: 0.3, z: 0}
 --- !u!82 &82243377087876470
 AudioSource:
   m_ObjectHideFlags: 1
@@ -260,7 +260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60e21fe4b5ce80948aeac4472426d874, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minionSpeed: 2.5
+  minionSpeed: 4
   deathSound: {fileID: 82243377087876470}
   minionValue: 200
 --- !u!212 &212205014003571114

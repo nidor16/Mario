@@ -56,7 +56,7 @@ public class Minion : MonoBehaviour {
 
 	IEnumerator bump()
 	{
-		Mario.instance.movement.y = Mario.instance.jumpSpeed * 0.25f;
+		Mario.instance.movement.y = Mario.instance.jumpSpeed * 0.4f;
 		this.gameObject.GetComponent<BoxCollider>().enabled = false;
 		animMin.SetBool ("dead", true);
 		minionSpeed = 0f;
