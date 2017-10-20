@@ -32,6 +32,7 @@ public class Controller : MonoBehaviour {
 		else if (instance != null)
 			Destroy (gameObject);
 
+		music.pitch = 1f;
 		music.clip = backgroudMusic;
 		music.Play ();
 		pointsText.text = "" + points;
@@ -46,6 +47,11 @@ public class Controller : MonoBehaviour {
 			timeleft -= Time.deltaTime;
 
 			if (timeleft < 40) 
+			{
+				music.pitch = 1.2f;
+			} 
+
+			if (timeleft < 20) 
 			{
 				music.pitch = 1.4f;
 			}
