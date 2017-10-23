@@ -95,19 +95,23 @@ public class Mario : MonoBehaviour {
 
 	void Animations()
 	{
-		if (Input.GetKey(KeyCode.D) && controller.isGrounded && anim.GetBool ("jumpleft") == false && anim.GetBool ("jumpright") == false)
+		if(controller.isGrounded && !anim.GetBool ("jumpleft") && !anim.GetBool ("jumpright"))
 		{
-			anim.SetBool ("wright", true);
-			anim.SetBool ("wleft", false);
+			if (Input.GetKey (KeyCode.D) && !Input.GetKey (KeyCode.A)) 
+			{
+				anim.SetBool ("wleft", false);
+				anim.SetBool ("wright", true);
+			} 
+
+			if (Input.GetKey (KeyCode.A) && !Input.GetKey (KeyCode.D)) 
+			{
+				anim.SetBool ("wright", false);
+				anim.SetBool ("wleft", true);
+			}
+
 		}
 
-		if (Input.GetKey (KeyCode.A) && controller.isGrounded && anim.GetBool ("jumpleft") == false && anim.GetBool ("jumpright") == false) 
-		{
-			anim.SetBool ("wleft", true);
-			anim.SetBool ("wright", false);
-		}
-
-		if (anim.GetBool ("wright") == true && anim.GetBool ("wleft") == false) 
+		if (anim.GetBool ("wright") && !anim.GetBool ("wleft")) 
 		{
 			if (controller.isGrounded) 
 			{
@@ -129,7 +133,7 @@ public class Mario : MonoBehaviour {
 				anim.SetBool ("runright", false);
 			}
 		} 
-		else if (anim.GetBool ("wright") == false && anim.GetBool ("wleft") == true)
+		else if (!anim.GetBool ("wright") && anim.GetBool ("wleft"))
 		{
 			if (controller.isGrounded) 
 			{

@@ -6,7 +6,7 @@ public class MinionCollision : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other)
 	{
-		if (other.gameObject.CompareTag ("Player")) 
+		if (!Mario.instance.isDead && other.gameObject.CompareTag ("Player")) 
 		{
 			Mario.instance.Death ();
 		}
