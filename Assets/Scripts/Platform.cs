@@ -23,7 +23,7 @@ public class Platform : MonoBehaviour {
 		this.animPlat.SetBool("touch", true);
 		Mario.instance.movement.y = Mario.instance.movement.y * -0.5f;
 		bump.Play ();
-		yield return new WaitForSeconds (0.1f);
+		yield return new WaitForSeconds (0.12f);
 		this.animPlat.SetBool("touch", false);
 	}
 }

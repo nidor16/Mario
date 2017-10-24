@@ -33,7 +33,7 @@ public class Minion : MonoBehaviour {
 
 	private void Move()
 	{
-		float xPos = transform.position.x + Time.deltaTime * minionSpeed * direction;
+		float xPos = transform.position.x + Time.deltaTime * minionSpeed * direction ;
 		minionPos = new Vector3 (xPos, -3f, 0f);
 		transform.position = minionPos;
 	}
